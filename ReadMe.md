@@ -1,6 +1,6 @@
 # Blood Supply Chain Management System  :
 
-## Discription : 
+## Description : 
 * The shortage of blood can occur at anytime, anywhere. Given the unpredictability of an emergency, one is quite unprepared no matter how cautious. As blood cannot be manufactured, and the shelf life of blood is too short, nothing could be said about the availability of a certain blood type in a particular healthcare facility. This makes human lives highly vulnerable despite the high technology era we live in. By proposing this application, we aim to simplify and automate the process of searching for blood in emergency situations. By maintaining a record of blood donors, recipients and stock availability in the blood bank, we plan to bring a sense of reliability in the decisions an individual makes, when time is of utmost value.
 
 ## User Stories following agile methodology: 
