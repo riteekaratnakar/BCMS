@@ -6,10 +6,7 @@
 /out-tsc
 
 # dependencies
-/Blood Supply Chain Management System/BSCMS-app/node_modules
-/Blood Supply Chain Management System/BSCMS-app/e2e
-/Blood Supply Chain Management System/node_modules
-/Blood Supply Chain Management System/node-rest-BSCMS/node_modules
+/node_modules
 
 # profiling files
 chrome-profiler-events.json
