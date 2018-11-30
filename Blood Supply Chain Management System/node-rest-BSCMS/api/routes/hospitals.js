@@ -3,9 +3,10 @@ const router = express.Router();
 const mongoose = require('mongoose')
 const Hospital = require('../models/hospital')
 
-router.get('/', (req, res, next) => {
+router.post('/authenicate', (req, res, next) => {
     const hospitalName = req.body.hospitalEmailId;
     const hospitalPassword = req.body.hospitalPassword;
+    console.log(hospitalName+" "+hospitalPassword);
     Hospital.find(
         {
             hospitalEmailId: hospitalName,

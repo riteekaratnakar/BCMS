@@ -12,7 +12,13 @@
       <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-      </mat-form-field>  
+      </mat-form-field>
+      <mat-form-field>
+          <mat-select placeholder="User Type" [(ngModel)]="userType">
+            <mat-option value="User">User</mat-option>
+            <mat-option value="Hospital">Hospital</mat-option>
+          </mat-select>
+        </mat-form-field>
       <div class="auth-error" *ngIf="error">Enter Valid Email or Password</div>
   <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
   <div class="footer-login">
