@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
 
 const connectionSchems = mongoose.Schema({
-    userOneEmailId : String,
-    userTwoEmailId : String,
+    senderUserEmailId : String,
+    senderUserName : String,
+    senderUserBloodGroup : String,
+    receiverUserEmailId : String,
+    receiverUserName : String,
+    receiverUserBloodGroup : String,
     status : String
 });
 

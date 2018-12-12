@@ -1,3 +1,5 @@
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
 ul {
     list-style-type: none;
     height: 44px;
@@ -76,11 +78,11 @@ ul {
   
   .heading--primary
   {
-    font-size: 40px;
+    font-size: 3rem;
     font-family: sans-serif;
     font-weight: 600;
     letter-spacing: 1rem;
-    margin-top: 1rem;
+    margin-top: -8rem;
     margin-left: 47rem;
     }
    
@@ -88,9 +90,9 @@ ul {
     {
         font-weight: 600;
         font-family: sans-serif;
-        font-size: 40px;
+        font-size: 3rem;
         margin-top: -1rem;
-        margin-left: 43rem;
+        margin-left: 39rem;
         margin-bottom: 2rem;
     }
     .heading--sub-sub
@@ -241,10 +243,24 @@ margin-top: 10.5rem;
     justify-content: center;
 }
 table {
-    width: 56.8%;
+    width: 95.5%;
     float: right;
-    margin-top: 218px;
-    margin-right: -47.6rem;
+    margin-top: 2px;
+    margin-right: 3rem;
+  }
+  .table-head{
+    margin-right: 3rem;
+    float: right;
+    text-align: center;
+    margin-top: 19rem;
+    width: 95.3%;
+    font-family: sans-serif;
+    font-size: 35px;
+    background-color: #B73336;
+    font-weight: bold;
+    border: solid;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.19);
   }
 #tablename
 {
@@ -253,29 +269,12 @@ table {
     font-weight: bold;
 }  
 
-.table-header
-{
-    margin-right: 5rem;
-    margin-left: -20rem;
-    margin-top: 10.6rem;
-    width: 56.5%;
-    text-align: center;
-    padding-right: -3px;
-    font-family: sans-serif;
-    font-size: 35px;
-    background-color: #B73336;
-    font-weight: bold;
-    border: solid;
-    color: white;
-    float: right;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.19);
-}
 .user-header{
     margin-top: 1px;
     margin-bottom: 3rem;
     padding-left: -46px;
     margin-left: -31px;
-    width: 128%;
+    width: 120%;
     font-family: sans-serif;
     font-size: 35px;
     background-color: #B73336;

@@ -3,6 +3,47 @@ const router = express.Router();
 const mongoose = require('mongoose')
 const Hospital = require('../models/hospital')
 
+router.get('/:zipCode', (req, res, next) => {
+    const hospitalZipCode = req.params.zipCode;
+    Hospital.find(
+        {
+            hospitalZipCode: hospitalZipCode,
+        }
+    )
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+});
+
+
+router.get('/:hospitalEmailId/:hospitalZipCode', (req, res, next) => {
+    const hospitalEmailId = req.params.hospitalEmailId;
+    const hospitalZipCode = req.params.hospitalZipCode;
+    Hospital.find(
+        {
+            hospitalEmailId: hospitalEmailId,
+            hospitalZipCode : hospitalZipCode,
+        }
+    )
+        .exec()
+        .then(docs => {
+            res.status(200).json(docs)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
+        });
+});
+
 router.post('/authenicate', (req, res, next) => {
     const hospitalName = req.body.hospitalEmailId;
     const hospitalPassword = req.body.hospitalPassword;
