@@ -140,7 +140,7 @@ export class ScheduleAppointment {
 
   // Function to confirm appointment for user
   confirmAppointment() {
-    console.log("Fron confirm appointment");'
+    console.log("Fron confirm appointment");
 	// Fetching up status appointment for select appointment between donar and appointment
     this.http.get('http://localhost:3000/appointments/' + this.data.senderUserEmailId + "/" + this.data.hospitalEmailId)
       .subscribe((data) => {

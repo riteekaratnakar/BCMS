@@ -140,7 +140,7 @@ export class RegisterUserComponent implements OnInit {
       }
     }
   }
-]}
+}
 
 
 class User {

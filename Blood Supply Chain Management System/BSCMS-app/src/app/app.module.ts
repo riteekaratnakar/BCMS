@@ -25,6 +25,7 @@ import { JasperoAlertsModule } from '@jaspero/ng-alerts';
 import { AppointmentCalenderComponent } from './appointment-calender/appointment-calender.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { EmailPageComponent } from './email-page/email-page.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ViewAppointmentUserComponent,
     ScheduleAppointment,
     AppointmentCalenderComponent,
+    EmailPageComponent,
   ],
   imports: [
     BrowserModule,
