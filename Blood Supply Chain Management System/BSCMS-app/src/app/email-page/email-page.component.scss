@@ -1,0 +1,66 @@
+.email{
+    border: solid;
+    display: block;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding-top: 28rem;
+    padding-right: 28rem;
+    padding-bottom: 0rem;
+    padding-left: 28rem;
+    background-color: #d9d9d9;
+    border-color: white;
+
+}
+
+input.mat-input-element{
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.recipient{
+    margin-top: -27rem;
+    margin-left: -14rem;
+    margin-bottom: 4rem;
+}
+
+.emailAddress{
+    margin-top: -3rem;
+    margin-left: -14rem;
+    margin-bottom: 4rem;
+}
+
+.emailSubject{
+    margin-top: -3rem;
+    margin-left: -14rem;
+    margin-bottom: 4rem;
+}
+
+.textarea-body{
+
+    margin-left: -14rem;
+    margin-bottom: 4rem;
+}
+
+.mat-input-element{
+    width: 100%;
+    padding-bottom: 22rem;
+    resize: none;
+}
+.btn-sendPage{
+background-color: #3399ff;
+margin-left: 41rem;
+border: none;
+color: white;
+padding: 14px 18px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+
+border-radius: 8.4px;
+cursor: pointer;
+font-weight: bold;
+
+}
+

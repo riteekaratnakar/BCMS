@@ -1,3 +1,10 @@
-<p>
-  email-page works!
-</p>
+<div class="email">
+  <div class="recipient"><h3>Recipient</h3><input matInput placeholder="Enter Recipients" name="sendTo" [(ngModel)]="receiverUserName" ></div>
+  <div class="emailAddress"><h3>From</h3><input matInput placeholder="Enter email address " name="from"  [(ngModel)]="senderUserName"></div>
+  <div class="emailSubject"><h3>Subject</h3><input matInput placeholder="Subject" name="subject"  [(ngModel)]="subject"></div>
+  <div class="textarea-body"><textarea matInput placeholder="" name="body" [(ngModel)]="body"></textarea></div>
+ </div>
+ <div class="btn-emailPage">
+ <button type="button" (click)='sendEmail()' class="btn-sendPage">Send</button>
+ <button type="button" (click)="userHomePage()" class="btn-sendPage">Cancel</button>
+</div>

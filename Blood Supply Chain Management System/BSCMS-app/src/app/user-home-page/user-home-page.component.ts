@@ -31,15 +31,15 @@ export class UserHomePageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private _alert: AlertsService, ) {
 
-	// Fetching user email from login params
+    // Fetching user email from login params
     this.route.queryParams.subscribe(params => {
       this.emailId = params["emailId"];
     });
-	
-	// Fetching data from mongodb  for user details of user home page 
+
+    // Fetching data from mongodb  for user details of user home page 
     this.http.get('http://localhost:3000/users/' + this.emailId)
       .subscribe((data) => {
-		// Assigning all details of current user from data fetched  
+        // Assigning all details of current user from data fetched  
         this.jsonData = data;
         this.name = data[0].name
         this.emailId = data[0].emailId;
@@ -56,7 +56,7 @@ export class UserHomePageComponent implements OnInit {
         }
       })
 
-	// Refreshing connections  
+    // Refreshing connections  
     this.getConnection();
 
   }
@@ -75,7 +75,7 @@ export class UserHomePageComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   // Navigating to search donor page with params
   searchDonorPage() {
     let navigationExtras: NavigationExtras = {
@@ -87,8 +87,7 @@ export class UserHomePageComponent implements OnInit {
   }
 
   // Navigating to user home page with params
-  userHomePage()
-  {
+  userHomePage() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         "emailId": this.emailId,
@@ -96,7 +95,7 @@ export class UserHomePageComponent implements OnInit {
     }
     this.router.navigate(['/userhomepage'], navigationExtras);
   }
-  
+
   //Navigating to search blood bank page with params
   searchBloodBankPage() {
     let navigationExtras: NavigationExtras = {
@@ -118,8 +117,7 @@ export class UserHomePageComponent implements OnInit {
   }
 
   //Navigating to update profile page with params
-  updateProfilePage()
-  {
+  updateProfilePage() {
     let navigationExtras: NavigationExtras = {
       queryParams: {
         "emailId": this.emailId,
@@ -136,7 +134,7 @@ export class UserHomePageComponent implements OnInit {
   // Function to approve connection 
   approveConnection(element) {
     console.log(this.emailId);
-	// Checking the status of connection between sender and donar
+    // Checking the status of connection between sender and donar
     this.http.get('http://localhost:3000/connections/' + element.senderUserEmailId + "/" + this.emailId)
       .subscribe((data) => {
         if (data[0] === undefined || data[0].status === 'Approved') {
@@ -152,7 +150,7 @@ export class UserHomePageComponent implements OnInit {
           let Connection = {
             status: "Approved"
           }
-		  // Updating the status of connection to approve
+          // Updating the status of connection to approve
           this.http.put('http://localhost:3000/connections/' + element.senderUserEmailId + "/" + this.emailId, Connection)
             .subscribe((data) => {
               console.log(data);
@@ -189,6 +187,38 @@ export class UserHomePageComponent implements OnInit {
           console.log("Undefine");
         }
       })
+  }
+
+  // Function to send an email to selected user
+  sendEmail(element) {
+    this.http.get('http://localhost:3000/connections/' + element.senderUserEmailId + "/" + element.receiverUserEmailId)
+      .subscribe((data) => {
+        if (data[0].status === 'Approved') {
+
+          let navigationExtras: NavigationExtras = {
+            queryParams: {
+              "senderUserEmailId": data[0].senderUserEmailId,
+              "receiverUserEmailId": data[0].receiverUserEmailId,
+              "senderUserName" : data[0].senderUserName,
+              "receiverUserName" : data[0].receiverUserName
+            }
+          }
+          this.router.navigate(['/emailpage'], navigationExtras);
+        }
+        else {
+
+          const options = {
+            overlay: true,
+            overlayClickToClose: true,
+            showCloseButton: true,
+            duration: 5000
+          };
+          this.openAlert('error', 'Not Authorized to send mail to this user', 'Not Authorized to send mail to this user', options);
+
+        }
+
+      })
+
   }
 }
 

@@ -55,7 +55,7 @@
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element"> <button class="table-btn" (click)="approveConnection(element)" >Approve</button> 
           <button class="table-btn" (click)="cancelRequest(element)">Cancel Request</button> 
-          <button class="table-btn">Contect User</button> </td>
+          <button class="table-btn"(click)="sendEmail(element)">Contact User</button> </td>
         </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

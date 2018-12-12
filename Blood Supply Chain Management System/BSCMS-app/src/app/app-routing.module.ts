@@ -15,6 +15,7 @@ import { ViewAppointmentUserComponent } from './view-appointment-user/view-appoi
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthGuard } from './_guards';
 import { AppointmentCalenderComponent } from './appointment-calender/appointment-calender.component';
+import { EmailPageComponent } from './email-page/email-page.component';
 
 
 const routes: Routes = [
@@ -29,14 +30,15 @@ const routes: Routes = [
   { path: 'registeruser', component: RegisterUserComponent },
   { path: 'userhomepage', component: UserHomePageComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
-  { path: 'registerhospital', component: RegisterhospitalComponent},
-  { path: 'searchdonar', component: SearchDonarComponent},
+  { path: 'registerhospital', component: RegisterhospitalComponent },
+  { path: 'searchdonar', component: SearchDonarComponent },
   { path: 'hospitalhomepage', component: HospitalHomePageComponent },
-  { path : 'updateprofile' , component : UpdateProfileUserComponent},
-  { path : 'searchbloodbank' , component : SearchBloodBankComponent},
-  { path : 'viewAppointmentHospital' , component : ViewAppointmentHospitalComponent},
-  { path : 'viewAppointmentUser' , component : ViewAppointmentUserComponent},
-  { path : 'appointmentCalender', component: AppointmentCalenderComponent} 
+  { path: 'updateprofile', component: UpdateProfileUserComponent },
+  { path: 'searchbloodbank', component: SearchBloodBankComponent },
+  { path: 'viewAppointmentHospital', component: ViewAppointmentHospitalComponent },
+  { path: 'viewAppointmentUser', component: ViewAppointmentUserComponent },
+  { path: 'appointmentCalender', component: AppointmentCalenderComponent }, 
+  { path: 'emailpage', component: EmailPageComponent }
 ];
 
 @NgModule({
