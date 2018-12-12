@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Router, NavigationExtras} from "@angular/router";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   username: String = "";
   password: String = "";
   loginClass: login;
-  hospitalLogin : HospitalLogin;
+  hospitalLogin: HospitalLogin;
   options: any;
   error: boolean;
   invalidUser: boolean;
@@ -23,63 +23,55 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Function to verifty user credentails
   login() {
     if (this.username === "" || this.password === "") {
       this.error = true;
     }
     else {
-      if (this.userType === "User") {
-        this.loginClass = new login(this.username, this.password);
-        this.options = {
-          body: this.loginClass
-        }
-        this.http.post('http://localhost:3000/users/authenicate', this.loginClass)
-          .subscribe((data) => {
-            console.log()
-            if (data[0] === undefined) {
-              this.invalidUser = true;
-            }
-            else {
-              let navigationExtras: NavigationExtras = {
-                queryParams: {
-                  "name": data[0].name,
-                  "emailId": data[0].emailId,
-                  "streetAddress": data[0].streetAddress,
-                  "city": data[0].city,
-                  "zipCode": data[0].zipCode,
-                  "state": data[0].state,
-                  "gender": data[0].gender,
-                  "dateofBirth": data[0].dateofBirth,
-                  "bloodGroup": data[0].bloodGroup,
-                  "contactNumber": data[0].contactNumber,
+      this.loginClass = new login(this.username, this.password);
+      this.options = {
+        body: this.loginClass
+      }
+	  // Checking if user exisit on system or not
+      this.http.post('http://localhost:3000/users/authenicate', this.loginClass)
+        .subscribe((data) => {
+          if (Object.keys(data).length === 0) {
+            console.log("Hospital");
+            this.hospitalLogin = new HospitalLogin(this.username, this.password);
+            this.http.post('http://localhost:3000/hospitals/authenicate', this.hospitalLogin)
+              .subscribe((data) => {
+                console.log()
+                if (data[0] === undefined) {
+                  this.invalidUser = true;
                 }
+                else {
+                  let navigationExtras: NavigationExtras = {
+                    queryParams: {
+                      "hospitalEmailId": data[0].hospitalEmailId,
+                      "hospitalZipCode": data[0].hospitalZipCode,
+                    }
+                  };
+                  this.router.navigate(['/hospitalhomepage'], navigationExtras);
+                }
+              })
+
+          }
+          else {
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                "emailId": data[0].emailId,
+              }
             };
-              console.log("Welcome User " + JSON.stringify(data));
-              this.router.navigate(['/userhomepage'], navigationExtras);
-            }
-          })
-      }
-      if(this.userType === "Hospital")
-      {
-        console.log("Hospital");
-        this.hospitalLogin = new HospitalLogin(this.username, this.password);
-        this.http.post('http://localhost:3000/hospitals/authenicate', this.hospitalLogin)
-          .subscribe((data) => {
-            console.log()
-            if (data[0] === undefined) {
-              this.invalidUser = true;
-            }
-            else {
-              console.log("Welcome User " + data[0].name);
-              this.router.navigate(['/userhomepage']);
-            }
-          })
-      }
+            this.router.navigate(['/userhomepage'], navigationExtras);
+          }
+        })
     }
   }
 
-}
 
+}
+// Class for login
 class login {
   emailId: String;
   password: String;
